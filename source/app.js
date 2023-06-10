@@ -4,25 +4,20 @@ import Header from './components/Header.js';
 import Selector from './components/Selector.js';
 import Introtext from './components/Introtext.js';
 
-
-const MyContext = React.createContext();
-
-export default function App({ name = '' }) {
+export default function App() {
 	const { exit } = useApp();
 
 	useInput((input) => {
-		if (input == 'q') {
+		if (input == 'q') {n
 			exit()
 		}
 	});
 
 	return (
 		<>
-			<MyContext.Provider value={''}>
 				<Header />
 				<Introtext />
 				<Selector />
-			</MyContext.Provider>
 		</>
 	);
 }
