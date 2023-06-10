@@ -1,37 +1,74 @@
-import React, { useEffect } from 'react';
+import React, { Children, useEffect, useContext,useState } from 'react';
 import SelectInput from 'ink-select-input';
 import MMA from '../SportsViews/MMA/index.js';
-import { useInput } from 'ink';
+import { useInput, render,Box,Text } from 'ink';
 import { SportsCategories } from '../Data/SelectorData.js';
-
+import UFC from '../SportsViews/MMA/UFC/index.js';
 
 export default function Selector() {
     const [selectedSport, setSelectedSport] = React.useState(null);
-    const [leftArrowPressed, setLeftArrowPressed] = React.useState(false);
+    const [selectedCategory, setSelectedCategory] = useState(null);
+
+
     const handleSelect = (item) => {
-        setSelectedSport(item.value)
-    }
+        if (!selectedSport) {
+            setSelectedSport(item.value);
+        } else if (!selectedCategory) {
+            setSelectedCategory(item.value);
+        }
+    };
 
-    React.useEffect(() => {
-        if (leftArrowPressed) {
+    const handleBack = () => {
+        if (selectedCategory) {
+            setSelectedCategory(null);
+        } else if (selectedSport) {
             setSelectedSport(null);
-            setLeftArrowPressed(false);
         }
-    }, [leftArrowPressed, selectedSport]);
+    };
 
-    useInput((_, key) => {
+    useInput((input, key) => {
         if (key.leftArrow) {
-            setLeftArrowPressed(true)
+            handleBack();
         }
-    });
+    })
+
+    const renderOptions = () => {
+        if (!selectedSport) {
+            return SportsCategories.sports.map((sport) => ({
+                label: sport.name,
+                value: sport.name
+            }));
+        } else if (!selectedCategory) {
+            const selectedSportData = SportsCategories.sports.find(
+                (sport) => sport.name === selectedSport
+            );
+            if (selectedSportData) {
+                const subcategories = selectedSportData.subcategories.map((subcategory) => ({
+                    label: subcategory.name,
+                    value: subcategory.name
+                }));
+
+                return [...subcategories];
+            }
+        }
+        return [];
+    };
+
+
+
+
 
 
     return (
         <>
-            {!selectedSport ? <SelectInput items={SportsCategories} onSelect={handleSelect} /> : null}
-            {selectedSport && {
-                'mma': <MMA />,
-            }[selectedSport]}
+            <Box flexDirection="column" marginTop={1} marginLeft={2}>
+                <SelectInput items={renderOptions()} onSelect={handleSelect} />
+               {/*  {selectedSport && selectedCategory && (
+                    <Box flexDirection="column">
+                    </Box>
+                )} */}
+                <UFC/>
+            </Box>
         </>
     );
 };
