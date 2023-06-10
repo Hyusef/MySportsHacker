@@ -1,31 +1,84 @@
-export const SportsCategories = [
-    {
-        label: 'MMA',
-        value: 'mma'
-    },
-    {
-        label: 'Football',
-        value: 'football'
-    },
-    {
-        label: 'Boxing',
-        value: 'boxing'
-    },
-    {
-        label: 'NBA',
-        value: 'nba'
-    },
-    {
-        label: 'Formula 1',
-        value: 'formula'
-    },
-    {
-        label: 'Tennis',
-        value: 'tennis'
-    }
-]
+export const SportsCategories = {
+	sports: [
+		{
+			name: 'MMA',
+			subcategories: [
+				{
+					name: 'UFC',
+				},
+				{
+					name: 'Bellator',
+				},
+				{
+					name: 'One-Championships',
+				},
+			],
+		},
+		{
+			name: 'Boxing',
+			subcategories: [
+				{
+					name: 'Wimbledon',
+				},
+				{
+					name: 'US Open',
+				},
+			],
+		},
+		{
+			name: 'Football',
+			subcategories: [
+				{
+					name: 'NBA',
+				},
+				{
+					name: 'EuroLeague',
+				},
+			],
+		},
+		{
+			name: 'Formula-1',
+			subcategories: [
+				{
+					name: 'Test Matches'
+				},
+				{
+					name: 'ODI',
+
+				},
+
+			],
+		},
+		{
+			name: 'NBA',
+			subcategories: [
+				{
+					name: 'PGA Tour',
 
 
+				},
+				{
+					name: 'The Masters',
+
+				},
+
+			],
+		},
+		{
+			name: 'Tennis',
+			subcategories: [
+				{
+					name: 'Olympics',
+
+				},
+				{
+					name: 'World Championships',
+
+				},
+			],
+		},
+	],
+};
 
 export const MMAOrgs = [
     {
