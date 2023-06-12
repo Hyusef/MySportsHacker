@@ -1,7 +1,7 @@
-import React, { Children, useEffect, useContext,useState } from 'react';
+import React, { Children, useEffect, useContext, useState } from 'react';
 import SelectInput from 'ink-select-input';
 import MMA from '../SportsViews/MMA/index.js';
-import { useInput, render,Box,Text } from 'ink';
+import { useInput, render, Box, Text } from 'ink';
 import { SportsCategories } from '../Data/SelectorData.js';
 import UFC from '../SportsViews/MMA/UFC/index.js';
 
@@ -53,21 +53,15 @@ export default function Selector() {
         }
         return [];
     };
-
-
-
-
-
-
     return (
         <>
             <Box flexDirection="column" marginTop={1} marginLeft={2}>
                 <SelectInput items={renderOptions()} onSelect={handleSelect} />
-               {/*  {selectedSport && selectedCategory && (
+                {selectedSport && selectedCategory && (
                     <Box flexDirection="column">
+                        <UFC />
                     </Box>
-                )} */}
-                <UFC/>
+                )}
             </Box>
         </>
     );
