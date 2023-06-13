@@ -18,6 +18,25 @@ const Spinners = () => {
     )
 }
 
+const getOneEvents = async () => {
+    const eventData = [];
+    axios.get("https://www.onefc.com/events/").then((resp) => {
+        const data = resp.data;
+        const $ = cheerio.load(data);
+        $('div.post-list.is-simple').find("div.simple-post-card ").each((i, e) => {
+            const event = [];
+            $(e).find('div.content').each((ind, ele) => {
+                const name = $(ele).find('h3').text();
+                const timeAndCountry = $(ele).find('div.event-date-time').text().replace(/\s/g, "").trim();
+                const [time, location] = timeAndCountry.split('/')
+                if (name && timeAndCountry) eventData.push({ name: name, time: time, location: location });
+            })
+            if (i == 3) return false;
+        })
+    })
+    return eventData;
+
+}
 
 const getFighterRankings = async () => {
     const ranksData = [];
@@ -40,6 +59,59 @@ const getFighterRankings = async () => {
 }
 
 export default function OneChampionship() {
+    return (
+        <>
+            <Text>This is One </Text>
+        </>
+    )
+}
+
+ function OneEvents() {
+    const [events, setEvents] = useState([])
+    const [rerender, setRerender] = useState(false)
+
+    useEffect(() => {
+        const getData = async () => {
+            try {
+                const OneEvents = await getOneEvents();
+                setEvents(OneEvents);
+            } catch (error) {
+            }
+        };
+        getData();
+
+        setTimeout(() => {
+            setRerender(true)
+        }, 2000)
+    }, []);
+
+
+    return (
+        <>
+            {
+                events?.length == 0 ?
+                    <Spinners />
+                    : (events?.map((ele, i) => {
+                        console.log(ele.headline)
+                        return (
+                            <Box borderStyle="round" marginRight={2} borderColor="yellow" >
+                                <Text>
+                                    <Text key={ele.name}>{ele.name}</Text>
+                                    <Newline />
+                                    <Text key={ele.loction}>{ele.location}</Text>
+                                    <Newline />
+                                    <Text key={i}>{ele.time}</Text>
+                                </Text>
+                            </Box>
+                        )
+                    }))
+            }
+        </>
+    )
+}
+
+
+function OneRankings() {
     const [division, setDivision] = useState([])
     const [rerender, setRerender] = useState(false)
 
@@ -59,7 +131,6 @@ export default function OneChampionship() {
 
     }, []);
 
-
     let strawweightData = [],
         flyweightData = [],
         bantamweightData = [],
@@ -67,13 +138,10 @@ export default function OneChampionship() {
         atomweightData = [],
         lightweightData = []
 
-
     if (division.length > 0) {
-
         division[0].forEach((e, i) => {
             strawweightData.push(e)
         });
-
         division[2].forEach((e, i) => {
             flyweightData.push(e)
         });
@@ -112,11 +180,11 @@ export default function OneChampionship() {
                                 <Strawweight />
                                 <Flyweight />
                             </Box>
-                            <Box borderStyle="round"  borderColor="yellow" >
+                            <Box borderStyle="round" borderColor="yellow" >
                                 <Bantamweight />
                                 <Featherweight />
                             </Box>
-                            <Box borderStyle="round"  borderColor="yellow" >
+                            <Box borderStyle="round" borderColor="yellow" >
                                 <Lightweight />
                                 <Atomweight />
                             </Box>
@@ -126,3 +194,4 @@ export default function OneChampionship() {
         </>
     )
 }
+
