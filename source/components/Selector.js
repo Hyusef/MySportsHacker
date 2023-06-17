@@ -4,6 +4,9 @@ import MMA from '../SportsViews/MMA/index.js';
 import { useInput, render, Box, Text } from 'ink';
 import { SportsCategories } from '../Data/SelectorData.js';
 import UFC from '../SportsViews/MMA/UFC/index.js';
+import Bellator from '../SportsViews/MMA/Bellator/index.js';
+import OneChampionship from '../SportsViews/MMA/OneChampionship/index.js';
+import Boxing from '../SportsViews/Boxing/index.js';
 
 export default function Selector() {
     const [selectedSport, setSelectedSport] = React.useState(null);
@@ -57,11 +60,11 @@ export default function Selector() {
         <>
             <Box flexDirection="column" marginTop={1} marginLeft={2}>
                 <SelectInput items={renderOptions()} onSelect={handleSelect} />
-                {selectedSport && selectedCategory && (
+               {/*  {selectedSport && selectedCategory && (
                     <Box flexDirection="column">
-                        <UFC />
                     </Box>
-                )}
+                )} */}
+                <Boxing/>
             </Box>
         </>
     );
