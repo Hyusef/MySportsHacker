@@ -43,6 +43,16 @@ const getTodaysFixtures = async () => {
 
 
 export default function Football() {
+    return (
+        <>
+            <Text>Football</Text>
+
+        </>
+    )
+}
+
+
+function TodaysFixtures() {
     const [fixtures, setFixtures] = useState([])
     const [rerender, setRerender] = useState(false)
 
