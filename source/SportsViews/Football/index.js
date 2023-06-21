@@ -45,7 +45,7 @@ const getTodaysFixtures = async () => {
 export default function Football() {
     return (
         <>
-            <Text>Football</Text>
+            <TodaysFixtures/>
 
         </>
     )
