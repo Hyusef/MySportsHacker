@@ -37,11 +37,9 @@ const getDriversRankings = async () => {
 }
 
 export default function Formula1() {
-
-
     return (
         <>
-            <Text>Formula1</Text>
+           <DriverRankings/>
         </>
     )
 }
