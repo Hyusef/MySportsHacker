@@ -26,7 +26,7 @@ const getEasternRankings = async (rank) => {
     axios.get("https://www.cbssports.com/nba/standings/").then((resp) => {
         const data = resp.data;
         const $ = cheerio.load(data);
-        $(`div.TableBaseWrapper:${rank==1?'first':'eq(1)'}`).find(tableSelect).each((_, e) => {
+        $(`div.TableBaseWrapper:${rank == 1 ? 'first' : 'eq(1)'}`).find(tableSelect).each((_, e) => {
             $(e).find('tbody').find('tr').each((index, team) => {
                 const rank = index + 1;
                 const teamName = $(team).find('span>a').text();
@@ -48,8 +48,8 @@ export default function NBA() {
         <>
             <Text>NBA</Text>
             <Box>
-            <EasternRankingsTable/>
-            <WesternRankingsTable/>
+                <EasternRankingsTable />
+                <WesternRankingsTable />
             </Box>
         </>
     )
