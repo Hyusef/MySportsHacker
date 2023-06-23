@@ -7,6 +7,9 @@ import UFC from '../SportsViews/MMA/UFC/index.js';
 import Bellator from '../SportsViews/MMA/Bellator/index.js';
 import OneChampionship from '../SportsViews/MMA/OneChampionship/index.js';
 import Boxing from '../SportsViews/Boxing/index.js';
+import Football from '../SportsViews/Football/index.js';
+import Formula1 from '../SportsViews/Formula1/index.js';
+import NBA from '../SportsViews/NBA/index.js';
 
 export default function Selector() {
     const [selectedSport, setSelectedSport] = React.useState(null);
@@ -64,7 +67,7 @@ export default function Selector() {
                     <Box flexDirection="column">
                     </Box>
                 )} */}
-                <Boxing/>
+            <NBA/>
             </Box>
         </>
     );
