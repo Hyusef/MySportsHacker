@@ -2,7 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Text, Box, render, Newline } from 'ink';
 import * as cheerio from 'cheerio';
 import axios from 'axios';
-import Spinner from 'ink-spinner';
+import Spinners from '../../../components/Spinners.js'
+
+
+
 import { Table } from '@alcalzone/ink-table'
 
 
@@ -103,22 +106,10 @@ const getEvents = async () => {
     return eventData;
 }
 
-const Spinners = () => {
-    return (
-        <>
-            <Text>
-                <Text color="red">
-                    <Spinner type="dots" />
-                </Text>
-                {' Loading'}
-            </Text>
-        </>
-    )
-}
 
-
-
+    
 export default function UFC() {
+
 
 }
 
@@ -144,29 +135,29 @@ function UfcEvents() {
 
     return (
         <>
-            {
-                events.length == 0 ?
-                    <Spinners />
-                    : (events.map((ele, i) => {
-                        console.log(ele.headline)
-                        return (
-                            <Box borderStyle="round" marginRight={2} borderColor="yellow" >
-                                <Text>
-                                    <Text key={ele.headline}>{ele.headline}</Text>
-                                    <Newline />
-                                    <Text key={ele.city}>{ele.city}</Text>
-                                    <Newline />
-                                    <Text key={i}>{ele.country}</Text>
-                                    <Newline />
-                                    <Text key={i}>{ele.date}</Text>
-                                    <Newline />
-                                    <Text key={ele.venue + i}>{ele.venue}</Text>
-                                </Text>
+                {
+                    events.length == 0 ?
+                        <Spinners />
+                        : (events.map((ele, i) => {
+                            console.log(ele.headline)
+                            return (
+                                <Box borderStyle="round" marginRight={2} borderColor="yellow" >
+                                    <Text>
+                                        <Text key={ele.headline}>{ele.headline}</Text>
+                                        <Newline />
+                                        <Text key={ele.city}>{ele.city}</Text>
+                                        <Newline />
+                                        <Text key={i}>{ele.country}</Text>
+                                        <Newline />
+                                        <Text key={i}>{ele.date}</Text>
+                                        <Newline />
+                                        <Text key={ele.venue + i}>{ele.venue}</Text>
+                                    </Text>
 
-                            </Box>
-                        )
-                    }))
-            }
+                                </Box>
+                            )
+                        }))
+                }
         </>
     )
 }

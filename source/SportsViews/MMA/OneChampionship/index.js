@@ -2,21 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { Text, Box, render, Newline } from 'ink';
 import * as cheerio from 'cheerio';
 import axios from 'axios';
-import Spinner from 'ink-spinner';
 import { Table } from '@alcalzone/ink-table'
+import Spinners from '../../../components/Spinners.js'
 
-const Spinners = () => {
-    return (
-        <>
-            <Text>
-                <Text color="red">
-                    <Spinner type="dots" />
-                </Text>
-                {' Loading'}
-            </Text>
-        </>
-    )
-}
+
+
 
 const getOneEvents = async () => {
     const eventData = [];

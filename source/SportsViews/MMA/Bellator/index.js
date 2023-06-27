@@ -2,22 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Text, Box, render, Newline } from 'ink';
 import * as cheerio from 'cheerio';
 import axios from 'axios';
-import Spinner from 'ink-spinner';
+
 import { Table } from '@alcalzone/ink-table'
 
-
-const Spinners = () => {
-    return (
-        <>
-            <Text>
-                <Text color="red">
-                    <Spinner type="dots" />
-                </Text>
-                {' Loading'}
-            </Text>
-        </>
-    )
-}
+import Spinners from '../../../components/Spinners.js'
 
 const getBellatorRankings = async () => {
     const ranksData = [];
@@ -68,6 +56,7 @@ export default function Bellator() {
     )
 }
 
+
 function BellatorRankings() {
     const [ranks, setRanks] = useState([])
     const [rerender, setRerender] = useState(false)
@@ -80,7 +69,6 @@ function BellatorRankings() {
             }
         };
         getData();
-        console.log(ranks);
         setTimeout(() => {
             setRerender(true)
         }, 2000)
@@ -108,9 +96,8 @@ function BellatorRankings() {
 }
 
 
-
-
 function BellatorEvents() {
+
     const [events, setEvents] = useState([])
     const [rerender, setRerender] = useState(false)
     useEffect(() => {

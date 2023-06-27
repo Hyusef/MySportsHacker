@@ -2,20 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Text, Box, render, Newline } from 'ink';
 import * as cheerio from 'cheerio';
 import axios from 'axios';
-import Spinner from 'ink-spinner';
+import Spinners from '../../components/Spinners.js'
+
 import { Table } from '@alcalzone/ink-table'
-const Spinners = () => {
-  return (
-    <>
-      <Text>
-        <Text color="red">
-          <Spinner type="dots" />
-        </Text>
-        {' Loading'}
-      </Text>
-    </>
-  )
-}
+
 
 const BoxerTables = ({ data, title }) => {
   console.log(data)

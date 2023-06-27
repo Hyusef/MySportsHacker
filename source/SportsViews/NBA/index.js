@@ -2,20 +2,9 @@ import React, { useState, useEffect } from 'react';
 import { Text, Box, render, Newline } from 'ink';
 import * as cheerio from 'cheerio';
 import axios from 'axios';
-import Spinner from 'ink-spinner';
+import Spinners from '../../components/Spinners.js'
+
 import { Table } from '@alcalzone/ink-table'
-const Spinners = () => {
-    return (
-        <>
-            <Text>
-                <Text color="red">
-                    <Spinner type="dots" />
-                </Text>
-                {' Loading'}
-            </Text>
-        </>
-    )
-}
 
 
 //create a way of getting input from user and include an option if they want to see both eastern and western standings,
