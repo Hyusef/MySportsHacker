@@ -16,66 +16,23 @@ export const SportsCategories = {
 		},
 		{
 			name: 'Boxing',
-			subcategories: [
-				{
-					name: 'Wimbledon',
-				},
-				{
-					name: 'US Open',
-				},
-			],
+			subcategories: [],
 		},
 		{
 			name: 'Football',
-			subcategories: [
-				{
-					name: 'NBA',
-				},
-				{
-					name: 'EuroLeague',
-				},
-			],
+			subcategories: [],
 		},
 		{
 			name: 'Formula-1',
-			subcategories: [
-				{
-					name: 'Test Matches'
-				},
-				{
-					name: 'ODI',
-
-				},
-
-			],
+			subcategories: [],
 		},
 		{
 			name: 'NBA',
-			subcategories: [
-				{
-					name: 'PGA Tour',
-
-
-				},
-				{
-					name: 'The Masters',
-
-				},
-
-			],
+			subcategories: [],
 		},
 		{
 			name: 'Tennis',
-			subcategories: [
-				{
-					name: 'Olympics',
-
-				},
-				{
-					name: 'World Championships',
-
-				},
-			],
+			subcategories: [],
 		},
 	],
 };
