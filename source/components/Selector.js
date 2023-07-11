@@ -10,6 +10,8 @@ import Boxing from '../SportsViews/Boxing/index.js';
 import Football from '../SportsViews/Football/index.js';
 import Formula1 from '../SportsViews/Formula1/index.js';
 import NBA from '../SportsViews/NBA/index.js';
+import Tennis from '../SportsViews/Tennis/index.js';
+
 
 export default function Selector() {
     const [selectedSport, setSelectedSport] = React.useState(null);
@@ -20,6 +22,7 @@ export default function Selector() {
         if (!selectedSport) {
             setSelectedSport(item.value);
         } else if (!selectedCategory) {
+            if(selectedCategory != 'Boxing' || setSelectedCategory != 'Football') return;
             setSelectedCategory(item.value);
         }
     };
@@ -63,11 +66,22 @@ export default function Selector() {
         <>
             <Box flexDirection="column" marginTop={1} marginLeft={2}>
                 <SelectInput items={renderOptions()} onSelect={handleSelect} />
-               {/*  {selectedSport && selectedCategory && (
+                {selectedSport =='Boxing'?<Boxing/>:null}
+                {selectedSport =='Football'?<Football/>:null}
+                {selectedSport =='Formula-1'?<Formula1/>:null}
+                {selectedSport =='Tennis'?<Tennis/>:null}
+                {selectedSport =='NBA'?<NBA/>:null}
+                {selectedSport && selectedCategory && (
                     <Box flexDirection="column">
+                        <Text>This is SelectedSport{selectedSport || null} </Text>
+                        <Text>This is SelectedSport{selectedCategory || null} </Text>
+                        {selectedCategory && {
+                            'UFC': <UFC />,
+                            'Bellator': <Bellator />,
+                            'One-Championships': <OneChampionship />,
+                        }[selectedCategory]}
                     </Box>
-                )} */}
-            <NBA/>
+                )}
             </Box>
         </>
     );
