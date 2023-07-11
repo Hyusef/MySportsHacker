@@ -45,7 +45,6 @@ export default function Formula1() {
                 console.error("Error fetching events:", error);
             }
         };
-
         getData();
         setTimeout(() => {
             setRerender(true)
