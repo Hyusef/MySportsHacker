@@ -4,7 +4,7 @@
 
 
   <br>
-  <a href="https://swisscalc.netlify.app/"><img src="https://github.com/Hyusef/mySportsHacker/assets/61304986/c0bb555e-725b-41ea-9074-f7d7a0b2cbe5" alt="" width="150"></a>
+ <img src="https://github.com/Hyusef/mySportsHacker/assets/61304986/c0bb555e-725b-41ea-9074-f7d7a0b2cbe5" alt="" width="350"></a>
 
 </h1>
 
